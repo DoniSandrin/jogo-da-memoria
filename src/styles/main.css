@@ -1,9 +1,10 @@
-body{
+body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background-color: #fc1e8a;
+    user-select: none;
 }
 
 .container {
@@ -13,13 +14,11 @@ body{
     justify-content: center;
     align-items: center;
     gap: 30px;
-    background: linear-gradient(
-        325deg,
-        #03001e 0%,
-        #7303c9 30%,
-        #ec38bc 70%,
-        #fdeff9 100%
-    );
+    background: linear-gradient(325deg,
+            #03001e 0%,
+            #7303c9 30%,
+            #ec38bc 70%,
+            #fdeff9 100%);
     padding: 40px 60px;
 }
 
@@ -49,14 +48,13 @@ h2 {
 }
 
 .game {
-    border: 1px solid red;
     width: 430px;
     height: 430px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     transform-style: preserve-3d;
-}   
+}
 
 .item {
     position: relative;
@@ -66,4 +64,28 @@ h2 {
     align-items: center;
     justify-content: center;
     background-color: #fff;
+
+    font-size: 3em;
+    transform: rotateY(180deg);
+    transition: 0.25s;
+}
+
+.item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #404040;
+    transition: 0.25s;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+}
+
+.item.boxOpen {
+    transform: rotateY(0deg);
+}
+
+.boxOpen::after,
+.boxMatch::after {
+    transform: rotateY(180deg);
+
 }
